@@ -11,7 +11,7 @@
  * 输入: ["flower","flow","flight"]
  * 输出: "fl"
  */
-public class LongestPrefix {
+public class Q14_LongestPrefix {
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0){
             return "";
