@@ -11,4 +11,4 @@
 .idea/workspace.xml
 leetCode.iml
 out/
-src/Q16_ThreeSumClosest.java
+src/main/java/Q16_ThreeSumClosest.java
