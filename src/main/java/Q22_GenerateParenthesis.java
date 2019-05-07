@@ -47,7 +47,7 @@ public class Q22_GenerateParenthesis {
 
             if (i % 2 == 0) {
                 //不需要交换到最后
-                for (int j = i + 1; j < length - 1 && j % 2 != 0; j += 2) {
+                for (int j = i + 1; j < length - 1; j += 2) {
                     exchangeAndRevert(chars, result, i, j);
                 }
             }
