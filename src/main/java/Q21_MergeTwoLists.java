@@ -4,20 +4,6 @@
  * @date 2019/5/6 17:41
  */
 public class Q21_MergeTwoLists {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        ListNode add(int i) {
-            ListNode next = new ListNode(i);
-            this.next = next;
-            return next;
-        }
-    }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode result = null;

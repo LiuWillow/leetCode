@@ -24,21 +24,6 @@ public class Q19_RemoveNthFromEnd {
         return head;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-        ListNode add(int i){
-            ListNode next = new ListNode(i);
-            this.next = next;
-            return next;
-        }
-    }
-
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         ListNode temp = head;
