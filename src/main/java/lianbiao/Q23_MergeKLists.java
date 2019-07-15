@@ -1,3 +1,5 @@
+package lianbiao;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 

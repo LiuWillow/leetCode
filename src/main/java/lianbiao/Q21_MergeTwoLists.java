@@ -1,3 +1,7 @@
+package lianbiao;
+
+import lianbiao.ListNode;
+
 /**
  * @author liuweilong
  * @description

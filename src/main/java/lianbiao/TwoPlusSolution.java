@@ -1,4 +1,4 @@
-import java.util.Stack;
+package lianbiao;
 
 /**
  * @author lwl
@@ -56,15 +56,6 @@ public class TwoPlusSolution {
             resultNext.next = new ListNode(1);
         }
         return listNode;
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 
     public static void main(String[] args) {
