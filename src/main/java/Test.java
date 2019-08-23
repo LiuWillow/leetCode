@@ -1,4 +1,6 @@
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  * @author liuweilong
@@ -7,13 +9,9 @@ import java.util.PriorityQueue;
  */
 public class Test {
     public static void main(String[] args) {
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
-        priorityQueue.add(1);
-        priorityQueue.add(3);
-        priorityQueue.add(2);
-        priorityQueue.add(0);
-        for (Integer integer : priorityQueue) {
-            System.out.println(integer);
-        }
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        forkJoinPool.submit(() -> {
+            System.out.println("sdfdf");
+        });
     }
 }
