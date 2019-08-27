@@ -1,3 +1,5 @@
+package shuzu;
+
 import java.util.Arrays;
 
 /**
@@ -44,19 +46,6 @@ public class Q26_RemoveDuplicates {
         }
         return distinctIndex + 1;
     }
-
-    /**
-     *  1, 2, 3, 4, 5, 6, 7
-     * b^  gap   ^       e^
-      */
-    public void shrink(int[] nums, int begin, int end, int gap) {
-        if (begin == end) {
-            return;
-        }
-        nums[begin] = nums[begin + gap];
-    }
-
-
 
     public static void main(String[] args) {
        int[] array = new int[]{0,0,1,1,1,2,2,3,3,4};
