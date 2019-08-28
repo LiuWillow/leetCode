@@ -50,7 +50,6 @@ public class Q28_strStr {
             result = i;
             break;
         }
-
         return result;
     }
 
