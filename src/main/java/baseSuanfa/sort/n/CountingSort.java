@@ -1,4 +1,4 @@
-package baseSuanfa.sort;
+package baseSuanfa.sort.n;
 
 import java.util.Arrays;
 

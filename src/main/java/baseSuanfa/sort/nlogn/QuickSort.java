@@ -1,4 +1,4 @@
-package baseSuanfa.sort;
+package baseSuanfa.sort.nlogn;
 
 import java.util.Arrays;
 
