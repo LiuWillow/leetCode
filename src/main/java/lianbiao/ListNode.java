@@ -6,10 +6,10 @@ package lianbiao;
  * @date 2019/5/7 17:44
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 
