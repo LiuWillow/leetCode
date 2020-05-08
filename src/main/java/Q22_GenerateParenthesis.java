@@ -1,8 +1,5 @@
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author liuweilong
@@ -21,55 +18,29 @@ import java.util.List;
  * ]
  */
 public class Q22_GenerateParenthesis {
+    private String leftKuohao = "(";
+    private String rightKuohao = ")";
     public List<String> generateParenthesis(int n) {
-        if (n < 1) {
-            return Collections.emptyList();
-        }
-        int length = n * 2;
-        char[] chars = new char[length];
-        for (int i = 0; i < length; i++) {
-            if (i % 2 == 0) {
-                chars[i] = '(';
-            } else {
-                chars[i] = ')';
-            }
-        }
-        List<String> result = new ArrayList<>();
-        result.add(String.valueOf(chars));
-
-        for (int i = 1; i < length - 1; i++) {
-            if (i % 2 != 0) {
-                //需要交换到最后
-                for (int j = i + 1; j < length; j += 2) {
-                    exchangeAndRevert(chars, result, i, j);
-                }
-            }
-
-            if (i % 2 == 0) {
-                //不需要交换到最后
-                for (int j = i + 1; j < length - 1; j += 2) {
-                    exchangeAndRevert(chars, result, i, j);
-                }
-            }
-        }
-        return result;
+        List<String> resultList = new ArrayList<>();
+        f(resultList, "", 0, 0, n);
+        return resultList;
     }
 
-    private void exchangeAndRevert(char[] chars, List<String> result, int i, int j) {
-        char temp = chars[j];
-        chars[j] = chars[i];
-        chars[i] = temp;
-        result.add(String.valueOf(chars));
-
-        chars[i] = chars[j];
-        chars[j] = temp;
+    public void f(List<String> resultList, String str, int open, int close, int max) {
+        if (open == max && close == max) {
+            resultList.add(str);
+            return;
+        }
+        if (open < max) {
+            f(resultList, str + "(", open + 1, close, max);
+        }
+        if (close < open) {
+            f(resultList, str + ")", open, close + 1, max);
+        }
     }
 
     public static void main(String[] args) {
-        List<String> strings = new Q22_GenerateParenthesis().generateParenthesis(3);
+        List<String> strings = new Q22_GenerateParenthesis().generateParenthesis(2);
         System.out.println(Arrays.toString(strings.toArray()));
-
-        char[] chars = {'(', ')'};
-        System.out.println(String.valueOf(chars));
     }
 }
