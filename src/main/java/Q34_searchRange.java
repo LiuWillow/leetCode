@@ -21,7 +21,7 @@
  * 链接：https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Q44_searchRange {
+public class Q34_searchRange {
     public int[] searchRange(int[] nums, int target) {
         final int length = nums.length;
         final int targetIndex = binarySearch(nums, 0, length - 1, target);
