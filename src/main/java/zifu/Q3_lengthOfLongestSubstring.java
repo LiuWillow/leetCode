@@ -42,7 +42,6 @@ public class Q3_lengthOfLongestSubstring {
      * <p>
      * 怎么判断是否有重复的，并记录重复的位置？hashMap
      */
-
     public int lengthOfLongestSubstring(String s) {
         if (Objects.isNull(s) || s.isEmpty()) {
             return 0;
@@ -55,22 +54,20 @@ public class Q3_lengthOfLongestSubstring {
         map.put(s.charAt(l), 0);
         int length = s.length();
         int max = 0;
-        int tempMax = 1;
         while (l < length && r < length) {
             char c = s.charAt(r);
             Integer location = map.get(c);
-            if (location != null) {
-                max = Math.max(max, tempMax);
+            //重要
+            if (location != null && location >= l) {
+                max = Math.max(max, r - l);
                 l = location + 1;
-                tempMax = 1;
-                map.put(c, r);
+                map.put(c, r++);
                 continue;
             }
-            tempMax++;
             map.put(c, r++);
         }
 
-        return Math.max(tempMax, max);
+        return Math.max(r - l, max);
     }
 
 
@@ -84,5 +81,6 @@ public class Q3_lengthOfLongestSubstring {
         System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("pwwkew") + " " + 3);
         System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("dvdf") + " " + 3);
         System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("abcabcbb") + " " + 3);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("abcaaaa") + " " + 3);
     }
 }
