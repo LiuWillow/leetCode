@@ -28,6 +28,9 @@ import java.util.Objects;
  *      请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
  */
 public class Q3_lengthOfLongestSubstring {
+    public Q3_lengthOfLongestSubstring() {
+    }
+
     /**
      * 记录最长子串长度初始值 maxLength 为1
      * 双指针扫描
@@ -44,34 +47,42 @@ public class Q3_lengthOfLongestSubstring {
         if (Objects.isNull(s) || s.isEmpty()) {
             return 0;
         }
-        int maxLength = 1;
-        int l = 0;
-        int r = l;
-        Map<Character, Integer> existedMap = new HashMap<>();
-        while (r < s.length()) {
-            char key = s.charAt(r);
-            Integer existedIndex = existedMap.get(key);
-            if (existedIndex == null) {
-                existedMap.put(key, r);
-                r++;
-            } else {
-                existedMap.remove(key);
-                maxLength = Math.max(maxLength, r - l);
-                for (int i = l; i < existedIndex + 1; i++) {
-                    existedMap.remove(s.charAt(i));
-                }
-                l = existedIndex + 1;
+        //abcdfcb
+        int l = 0; //包含在字符串中
+        int r = 1; //包含
+
+        Map<Character, Integer> map = new HashMap<>();
+        map.put(s.charAt(l), 0);
+        int length = s.length();
+        int max = 0;
+        int tempMax = 1;
+        while (l < length && r < length) {
+            char c = s.charAt(r);
+            Integer location = map.get(c);
+            if (location != null) {
+                max = Math.max(max, tempMax);
+                l = location + 1;
+                tempMax = 1;
+                map.put(c, r);
+                continue;
             }
+            tempMax++;
+            map.put(c, r++);
         }
 
-        return Math.max(maxLength, r - l);
+        return Math.max(tempMax, max);
     }
 
 
     public static void main(String[] args) {
-        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("abba"));
-        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("bbbbb"));
-        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("pwwkew"));
-        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("") + " " + 0);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("a") + " " + 1);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("ab") + " " + 2);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("aa") + " " + 1);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("abba") + " " + 2);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("bbbbb") + " " + 1);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("pwwkew") + " " + 3);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("dvdf") + " " + 3);
+        System.out.println(new Q3_lengthOfLongestSubstring().lengthOfLongestSubstring("abcabcbb") + " " + 3);
     }
 }

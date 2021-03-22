@@ -1,3 +1,7 @@
+import lianbiao.ListNode;
+
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author liuweilong
  * @description
@@ -5,32 +9,54 @@
  */
 public class Test {
     public static void main(String[] args) throws Exception {
-        int[] items = new int[]{2, 3,1,4,5,6};
-        new Test().knapsack2(items, 6, 10);
+        System.out.println(Integer.numberOfLeadingZeros(32) | (1 << (16 - 1)));
+        ConcurrentHashMap<Integer, Integer> concurrentHashMap = new ConcurrentHashMap<>(15);
+        for (int i = 0; i < 32; i++) {
+            concurrentHashMap.put(i, i);
+        }
     }
 
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null) {
+            return null;
+        }
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
 
-    /**
-     *
-     * @param items
-     * @param n 物品个数
-     * @param weightCapacity
-     * @return
-     */
-    public static int knapsack2(int[] items, int n, int weightCapacity) {
-        boolean[] states = new boolean[weightCapacity+1]; // 默认值false
-        states[0] = true;  // 第一行的数据要特殊处理，可以利用哨兵优化
-        if (items[0] <= weightCapacity) {
-            states[items[0]] = true; //第一个已经放进去了
+        ListNode result = new ListNode(0);
+        ListNode head = result;
+        int advance = 0;
+        while (l1 != null && l2 != null) {
+            int val1 =  l1.val;
+            int val2 =  l2.val;
+            int sum = val1 + val2 + advance;
+            int recordSum = sum >= 10 ? sum - 10 : sum;
+            advance = sum >= 10 ? 1 : 0;
+            ListNode node = new ListNode(recordSum);
+            head.next = node;
+            head = node;
+            l1 = l1.next == null ? null : l1.next;
+            l2 = l2.next == null ? null : l2.next;
         }
-        for (int i = 1; i < n; ++i) { // 动态规划
-            for (int j = weightCapacity-items[i]; j >= 0; --j) {//把第i个物品放入背包
-                if (states[j]) states[j+items[i]] = true;
-            }
+        ListNode next = l1 == null ? l2 : l1;
+        if (next == null) {
+            return result.next;
         }
-        for (int i = weightCapacity; i >= 0; --i) { // 输出结果
-            if (states[i]) return i;
+        ListNode tmpHead = next;
+        while (next != null) {
+            int val =  next.val;
+            int sum = val + advance;
+            int recordSum = sum >= 10 ? sum - 10 : sum;
+            advance = sum >= 10 ? 1 : 0;
+            next.val = recordSum;
+            next = next.next;
         }
-        return 0;
+
+        head.next = tmpHead;
+        return result.next;
     }
 }

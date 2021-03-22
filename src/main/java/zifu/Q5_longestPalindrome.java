@@ -50,9 +50,4 @@ public class Q5_longestPalindrome {
         }
         return s.substring(realLeft, realRight + 1);
     }
-
-    public static void main(String[] args) {
-        String s = "abaab";
-        System.out.println(new Q5_longestPalindrome().longestPalindrome(s));
-    }
 }
