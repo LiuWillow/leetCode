@@ -27,4 +27,17 @@ public class ListNode {
         }
         return result.next;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(val);
+        ListNode tempNext = next;
+        while (tempNext != null) {
+            s.append(" -> ").append(tempNext.val);
+            tempNext = tempNext.next;
+        }
+        s.append(" -> null");
+        return s.toString();
+    }
 }
