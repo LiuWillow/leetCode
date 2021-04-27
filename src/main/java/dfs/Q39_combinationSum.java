@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+package dfs;
+
+import java.util.*;
 
 /**
  * @author liuweilong
@@ -79,4 +80,5 @@ public class Q39_combinationSum {
         System.out.println(q39_combinationSum.combinationSum(nums, 4));
         System.out.println(q39_combinationSum.combinationSum(nums, 8));
     }
+
 }
