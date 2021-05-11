@@ -1,3 +1,5 @@
+package shuangzhizhen;
+
 import java.util.Arrays;
 
 /**
