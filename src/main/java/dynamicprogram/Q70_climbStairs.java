@@ -42,6 +42,6 @@ public class Q70_climbStairs {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Q70_climbStairs().climbStairs(10));
+        System.out.println(new Q70_climbStairs().climbStairs(4));
     }
 }
