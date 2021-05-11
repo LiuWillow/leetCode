@@ -13,11 +13,30 @@ public class ListNode {
         val = x;
     }
 
+    public ListNode(int x, ListNode next) {
+        this.val = x;
+        this.next = next;
+    }
+
+
     ListNode add(int i) {
         ListNode next = new ListNode(i);
         this.next = next;
         return next;
     }
+
+    public void print() {
+        StringBuilder s = new StringBuilder();
+        s.append(val);
+        ListNode tempNext = next;
+        while (tempNext != null) {
+            s.append(" -> ").append(tempNext.val);
+            tempNext = tempNext.next;
+        }
+        s.append(" -> null");
+        System.out.println(s.toString());
+    }
+
     public static ListNode generate(int[] a1) {
         ListNode result = new ListNode(0);
         ListNode head = result;
