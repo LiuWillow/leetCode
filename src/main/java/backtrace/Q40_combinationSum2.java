@@ -128,7 +128,6 @@ public class Q40_combinationSum2 {
             return;
         }
 
-
         Pair currentPair = distinctNums.get(curIndex);
         int times = currentPair.times;
         int currentNum = currentPair.num;
