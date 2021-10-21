@@ -5,12 +5,12 @@ import java.util.Arrays;
 /**
  * author liuweilong
  * date 2019/9/24 14:41
- * desc
+ * desc 冒泡排序，与相邻的数字相比，大的往右移，最后一个一定是最大的
  */
 public class MaoPaoSort {
     public void sort(int[] nums) {
-        for (int i = nums.length; i > 0; i--) {
-            for (int j = 0; j < i - 1; j++) {
+        for (int i = nums.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
                 if (nums[j] > nums[j + 1]) {
                     int temp = nums[j];
                     nums[j] = nums[j + 1];

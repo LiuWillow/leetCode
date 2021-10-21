@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author lwl
  * @date 2019/4/3 17:12
  * @description 希尔排序
- * 比较一定增量间隔的数字，这样一次就能移动较远间隔，一般初次增量为数组一半，之后每次减半，直到增量为0
+ * 在选择排序的基础上，比较一定增量间隔的数字，这样一次就能移动较远间隔，一般初次增量为数组一半，之后每次减半，直到增量为0
  */
 public class HillSort {
     public void sort(int[] nums){

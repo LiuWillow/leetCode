@@ -9,20 +9,18 @@ import java.util.Arrays;
  * 先找到数组中最小的元素，将其与第一个元素交换位子，然后在剩下的元素中找最小，与第二个交换，以此类推
  */
 public class ChooseSort {
-    public void sort(int[] nums){
-        int length = nums.length;
-        for (int i = 0; i < length - 1; i++) {
+    public void sort(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
             int min = nums[i];
             int minIndex = i;
-            for (int j = i + 1; j < length; j++) {
-                if (min > nums[j]){
-                    min = nums[j];
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < min) {
                     minIndex = j;
+                    min = nums[j];
                 }
             }
-            int temp = nums[i];
-            nums[i] = nums[minIndex];
-            nums[minIndex] = temp;
+            nums[minIndex] = nums[i];
+            nums[i] = min;
         }
     }
 
