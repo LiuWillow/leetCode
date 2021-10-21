@@ -1,5 +1,7 @@
 package baseSuanfa.sort.nlogn;
 
+import util.ArraysUtils;
+
 import java.util.Arrays;
 
 /**
@@ -10,38 +12,44 @@ import java.util.Arrays;
  * 将L作为中间值，L的下标切分为两份，两边递归
  */
 public class QuickSort {
-    public static int partition(int[] array, int lo, int hi) {
-        int key = array[lo];
+    public int patrition(int[] nums, int lo, int hi) {
+        int beginIndex = lo;
+        int target = nums[lo];
+        // 遍历lo + 1 到hi，跟target比较，大的换到最后，hi--，小的换到前面lo++
+        // 结束条件lo >= hi
+        //最后判断lo和beginIndex的大小，把交换后的beginIndex返回
         while (lo < hi) {
-            while (array[hi] >= key && hi > lo) {
+            if (nums[lo] <= target) {
+                lo++;
+            } else if (nums[lo] > target) {
+                ArraysUtils.exchange(lo, hi, nums);
                 hi--;
             }
-            array[lo] = array[hi];
-            while (array[lo] <= key && hi > lo) {
-                lo++;
-            }
-            array[hi] = array[lo];
         }
-        array[lo] = key;
-        return lo;
+
+        if (nums[lo] < nums[beginIndex]) {
+            ArraysUtils.exchange(lo, beginIndex, nums);
+            return lo;
+        }
+        return beginIndex;
     }
 
-    public static void sort(int[] array, int lo, int hi) {
+    public void testSort(int[] nums, int lo, int hi) {
         if (lo >= hi) {
             return;
         }
-        int index = partition(array, lo, hi);
-        sort(array, lo, index - 1);
-        sort(array, index + 1, hi);
-    }
-
-    public void sort(int[] nums) {
-        sort(nums, 0, nums.length - 1);
+        int mid = patrition(nums, lo, hi);
+        testSort(nums, lo, mid - 1);
+        testSort(nums, mid + 1, hi);
     }
 
     public static void main(String[] args) {
         int[] nums = new int[]{34, 4, 6, 7, 3, 35, 2, 3, 55, 2, 34, 53};
-        new QuickSort().sort(nums);
+        new QuickSort().testSort(nums, 0, nums.length - 1);
         System.out.println(Arrays.toString(nums));
+    }
+
+    public void sortDiedai(int[] nums) {
+        //
     }
 }
