@@ -47,6 +47,7 @@ public class Q47_permuteUnique {
             return;
         }
         for (int i = 0; i < nums.length; i++) {
+            //终极精华，via[i - 1]为了保证访问顺序，只有前面被访问了，后面的才访问
             if (i > 0 && nums[i] == nums[i - 1] && via[i - 1]) {
                 continue;
             }

@@ -77,6 +77,7 @@ public class Q45_jump {
         }
         return steps;
     }
+
     public int jump_tryOfficial(int[] nums) {
         int maxPosition = 0;
         int length = nums.length;

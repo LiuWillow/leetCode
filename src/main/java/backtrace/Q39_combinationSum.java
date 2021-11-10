@@ -44,33 +44,31 @@ public class Q39_combinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> tempResult = new ArrayList<>();
-        dfs(result, tempResult, candidates, 0, candidates.length, target);
+        backTrace(result, tempResult, candidates, 0, candidates.length, target);
         return result;
     }
 
-    private void dfs(List<List<Integer>> result, List<Integer> tempResult, int[] candidates, int cur, int n, int target) {
+    private void backTrace(List<List<Integer>> result, List<Integer> tempResult, int[] candidates, int cur, int n, int target) {
         // cur == n 结束
         if (cur == n) {
             return;
         }
 
         // 加当前数等于target，结束并纳入结果集
-        int currentNum = candidates[cur];
         if (target == 0) {
             result.add(new ArrayList<>(tempResult));
             return;
         }
 
-        dfs(result, tempResult, candidates, cur + 1, n, target);
+        backTrace(result, tempResult, candidates, cur + 1, n, target);
 
+        int currentNum = candidates[cur];
         int gap = target - currentNum;
         if (gap >= 0) {
             tempResult.add(currentNum);
-            dfs(result, tempResult, candidates, cur, n, gap);
+            backTrace(result, tempResult, candidates, cur, n, gap);
             tempResult.remove(tempResult.size() - 1);
         }
-
-        //直接跳过
     }
 
     public static void main(String[] args) {
